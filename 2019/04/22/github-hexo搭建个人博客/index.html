@@ -134,51 +134,40 @@ hexo
 <li><p id="220">创建本地博客</p>
 
 <p>首先需要在本地创建你的博客文件夹。打开一个你想安置博客文件夹的位置，例如我放在了F盘，进入<code>F:\</code>，打开Git Bash,输入下面的命令行，其中“blog”可以换成你想用的文件夹名字。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog       //创建文件夹并将其初始化为hexo博客文件</span><br><span class="line">cd blog              //进入该文件夹</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>或者一个**空文件夹**，并在该文件夹上打开Git Bash，输入以下命令
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init         //在当前文件夹初始化</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-
-输入以下命令，生成静态文件并启动本地服务器
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog       //创建文件夹并将其初始化为hexo博客文件</span><br><span class="line">cd blog              //进入该文件夹</span><br><span class="line">npm install         //</span><br></pre></td></tr></table></figure>
+<p>  或者一个<strong>空文件夹</strong>，并在该文件夹上打开Git Bash，输入以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init         //在当前文件夹初始化</span><br><span class="line">npm install       //</span><br></pre></td></tr></table></figure>
+<p>  输入以下命令，生成静态文件并启动本地服务器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate    //生成静态文件  可简写成hexo g</span><br><span class="line">hexo server      //打开本地服务器  可简写成hexo s</span><br></pre></td></tr></table></figure>
-
-
-默认情况下，访问网址为`http://localhost:4000/`，可进入该网站查看你的博客。当然现在只能本地查看。
-</code></pre><ul>
+<p>  默认情况下，访问网址为<code>http://localhost:4000/</code>，可进入该网站查看你的博客。当然现在只能本地查看。</p>
+</li>
 <li><p id="221">建立关联</p>
 
 <p>打开你创建的博客文件夹，里面有一个站点配置文件<code>_config.yml</code>，用记事本打开这个文件，下拉到最后，若无<code>deploy</code>项可自行添加，修改为以下内容。其中YourName修改为你的GitHub名字。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo https://github.com/YourName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>  <em>注意：<code>_config.yml</code>文件中，冒号后面应该有一个半角空格，如果在提交的时候报错，请检查该文件冒号后面的空格时候缺失。如果仍旧报错，请将上述<code>repo</code>后面的网址协议改为http。</em></p>
+<p>输入以下命令，安装deploy-git，以部署本地文件到GitHub。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code>*注意：`_config.yml`文件中，冒号后面应该有一个半角空格，如果在提交的时候报错，请检查该文件冒号后面的空格时候缺失。如果仍旧报错，请将上述`repo`后面的网址协议改为http。*
-
-输入以下命令，安装deploy-git，以部署本地文件到GitHub。
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-</code></pre><ul>
+</li>
+</ul>
+<ul>
 <li><p id="222">部署文件</p>
 
 <p>输入以下命令，将你对博客的修改提交至GitHub。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo deploy    //可简写成hexo d</span><br></pre></td></tr></table></figure>
+<p>  <em>注：deploy时，有可能需要输入自己的username和password。</em></p>
+<p>至此，你的个人博客就搭建好了，等一会儿，在<code>yourname.github.io</code>，即上面让你创建的仓库名查看你的博客，其中yourname替换成你的用户名。</p>
 </li>
 </ul>
-<pre><code>*注：deploy时，有可能需要输入自己的username和password。*
-
-至此，你的个人博客就搭建好了，等一会儿，在`yourname.github.io`，即上面让你创建的仓库名查看你的博客，其中yourname替换成你的用户名。
-</code></pre><h1 id="3">配置博客</h1>
+<h1 id="3">配置博客</h1>
 
 <ul>
 <li><p id="30">修改信息</p>
 
 <p>在建立关联中提到过一个站点配置文件<code>_config.yml</code>，打开这个文件，修改最前面的一些信息，即可把你的博客显示用户信息修改。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">![save](F:\blog\source\_posts\github-hexo搭建个人博客\save.png)# Site</span><br><span class="line">title:  						//标题，也就是网页标签显示内容</span><br><span class="line">subtitle: 						//副标题</span><br><span class="line">description: 					//描述</span><br><span class="line">keywords: </span><br><span class="line">author: 						//作者</span><br><span class="line">language: zh-cn 				//若博客为中文，可以输入zh-cn</span><br><span class="line">timezone:						//时区，默认为电脑所用时区</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Site</span><br><span class="line">title:  						//标题，也就是网页标签显示内容</span><br><span class="line">subtitle: 						//副标题</span><br><span class="line">description: 					//描述</span><br><span class="line">keywords: </span><br><span class="line">author: 						//作者</span><br><span class="line">language: zh-cn 				//若博客为中文，可以输入zh-cn</span><br><span class="line">timezone:						//时区，默认为电脑所用时区</span><br></pre></td></tr></table></figure>
 <p><em>注：前面曾提到过，<code>_config.yml</code>文件中，冒号后面要加上半角空格</em></p>
 <p>若保存后出现中文乱码，请用记事本打开该文件，依次选择<strong>文件</strong>–&gt;<strong>另存为</strong>，保存类型选择<strong>所有文件</strong>，编码选择<strong>UTF-8</strong>，双击<code>_config.yml</code>,然后替换它。如下所示</p>
 <p><img src="save.png" alt="保存为UTF-8"></p>
